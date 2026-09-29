@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Caches and testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Environment configurations and secrets
+.env
+.env.*
+!.env.example
+
+# IDE & Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# ChromaDB vector store data and local databases
+backend/data/chroma_db/
+backend/data/chroma_db/*
+backend/data/telemetry.db
+backend/data/telemetry.db-shm
+backend/data/telemetry.db-wal
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# Build and distribution
+dist/
+build/
+*.egg-info/
+node_modules/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini

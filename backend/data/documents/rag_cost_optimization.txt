@@ -1,0 +1,18 @@
+# RAG Cost Optimization Strategies and Architectural Patterns
+
+## Overview
+Retrieval-Augmented Generation (RAG) empowers Large Language Models (LLMs) by grounding them with relevant external data. However, scaling enterprise RAG applications often leads to astronomical API token expenses when relying purely on paid commercial APIs (such as OpenAI, Anthropic, or Cohere). Implementing a structured RAG Cost Optimization framework drastically cuts inference expenses while maintaining high precision.
+
+## Key Cost Optimization Vectors
+
+### 1. Zero-Cost Local Inference with Open-Weight Models
+By hosting open-weight models like Meta's Llama 3.2 3B using local runtimes such as Ollama, vLLM, or llama.cpp, businesses eliminate per-token cloud inference costs entirely. Llama 3.2 3B offers remarkable reasoning and context processing capabilities within a tiny memory footprint (<3GB VRAM), making it ideal for desktop and edge deployment.
+
+### 2. High-Efficiency Local Vector Embeddings
+Instead of paying per-embedding API calls, local embedding models such as Sentence-Transformers (e.g., all-MiniLM-L6-v2) run lightning-fast on standard CPU and GPU hardware. The all-MiniLM-L6-v2 model produces 384-dimensional dense vectors with exceptional semantic fidelity for search and retrieval tasks at zero recurring API costs.
+
+### 3. Precision Chunking and Top-K Pruning
+Sending excessive context into an LLM wastes computational cycles. Setting the top-K retrieval parameter to a focused count (such as top 3 relevant chunks) ensures that only the highest quality context enters the prompt, keeping token processing snappy and reducing hallucination risks.
+
+### 4. Grounded Context-Only Constraint
+To guarantee truthfulness and eliminate hallucinations, the RAG system enforces a strict boundary: the LLM must synthesize its answers exclusively from the retrieved context. When the required information is not present in the context, the system explicitly returns a standardized disclaimer indicating the data is not available.

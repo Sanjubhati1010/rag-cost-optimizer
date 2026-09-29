@@ -1,0 +1,15 @@
+# Internal Knowledge Base - Engineering & Infrastructure Policies
+
+## Service Port Guidelines
+All internal microservices must adhere to the following port allocation standards:
+- RAG Cost Optimizer Backend (FastAPI): Port 8000
+- Ollama Local Inference Engine: Port 11434
+- ChromaDB Vector Service: Embedded locally in-process via backend/data/chroma_db
+
+## Project Phase Breakdown
+- Phase 1: Local Zero-Cost RAG Foundation. Establishes FastAPI backend, ChromaDB persistence, Sentence Transformers (all-MiniLM-L6-v2), Ollama (llama3.2:3b), and top-3 semantic retrieval.
+- Phase 2: High-Performance Semantic Caching. Introduces an embedding-similarity cache layer to reuse answers for repeated or semantically equivalent questions, cutting LLM processing overhead.
+- Phase 3: Cost-Aware Intelligent Routing. Dynamically routes queries between lightweight local models and larger reasoning engines based on query complexity.
+
+## Document Ingestion Guidelines
+Text files added to `backend/data/documents/` must be formatted in UTF-8. The ingestion engine automatically splits text into chunks of 500 characters with a 60-character sliding overlap, preserving context flow across boundaries.
